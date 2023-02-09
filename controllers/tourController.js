@@ -18,7 +18,7 @@ export const updateTour = async (req, res) => {
     try {
         const updatedTour = await Tour.findByIdAndUpdate(id, {
             $set: req.body
-        }, { new: true })
+        }, { new: true });
         res.status(200).json({ success: true, message: "Successfully updated", data: updatedTour });
     } catch (err) {
         res.status(500).json({ success: false, message: "Failed to updated , Try again" });
@@ -27,8 +27,13 @@ export const updateTour = async (req, res) => {
 
 // delete tour
 export const deleteTour = async (req, res) => {
+    const id = req.params.id
     try {
+        await Tour.findByIdAndDelete(id);
+        
+        res.status(200).json({ success: true, message: "Successfully deleted"});
     } catch (err) {
+        res.status(500).json({ success: false, message: "Failed to delete , Try again" });
     }
 };
 
