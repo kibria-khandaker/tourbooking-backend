@@ -1,10 +1,10 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import cors from "cors";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
 
-import tourRouter from './routes/tours.js'
+import tourRouter from './routes/tours.js';
 
 dotenv.config();
 const app = express();
@@ -39,3 +39,11 @@ app.listen(port, () => {
     connect();
     console.log(`The server has started on port: ${port}`)
 });
+
+
+
+// https://www.youtube.com/watch?v=w_PxLGCBRuA&list=PLfhDYRr-FofmvuICA63cUD1vo7MuY-t3g&index=7
+
+// 42 minit done
+
+// npm run start-dev
