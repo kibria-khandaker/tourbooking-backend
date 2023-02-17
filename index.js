@@ -5,6 +5,8 @@ import express from "express";
 import mongoose from "mongoose";
 
 import tourRouter from './routes/tours.js';
+import userRouter from './routes/users.js';
+import authRouter from './routes/auth.js';
 
 dotenv.config();
 const app = express();
@@ -33,7 +35,9 @@ const connect = async () => {
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.use("/auth", authRouter);
 app.use("/tours", tourRouter);
+app.use("/users", userRouter);
 
 app.listen(port, () => {
     connect();

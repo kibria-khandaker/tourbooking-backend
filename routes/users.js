@@ -3,29 +3,29 @@ import { getAllUser, deleteUser, getFeaturedUser, updateUser } from '../controll
 const router = express.Router()
 
 
-// create new tour
-// router.post('/', createTour);
+// create new User
+// router.post('/', createUser);
 
-// update tour
+// update User
 router.put('/:id', updateUser);
 
-// delete tour
+// delete User
 router.delete('/:id', deleteUser);
 
-// getSingle tour
+// getSingle User
 router.get('/:id', getFeaturedUser);
 
-// getAll tour
+// getAll User
 router.get('/', getAllUser);
 
-// // get Tour By Search
-// router.get('/search/getTourBySearch', getTourBySearch);
+// // get User By Search
+// router.get('/search/getUserBySearch', getUserBySearch);
 
-// // get Featured tour
-// router.get('/search/getFeaturedTours', getFeaturedTour);
+// // get Featured User
+// router.get('/search/getFeaturedUsers', getFeaturedUser);
 
-// // get Count tour
-// router.get('/search/getTourCount', getTourCount);
+// // get Count User
+// router.get('/search/getUserCount', getUserCount);
 
 
 export default router;
