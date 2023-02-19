@@ -31,15 +31,16 @@ export const login = async (req, res) => {
     const email = req.body.email
 
     try {
-        const user = await User.findOne({email})
+        const user = await User.findOne({ email })
 
         // if user doesn't exist
         if (!user) {
             return res.status(404).json({ success: false, message: "User Not Found" })
         }
 
-        // if user is exist then check Password and compare Password
-        const checkCorrectPassword = bcrypt.compare(req.body.password, user.password)
+        // if user is exist then check Password and compare Password 
+        // ---- here why need await without pass not checking ?
+        const checkCorrectPassword = await bcrypt.compare(req.body.password, user.password)
 
         // if Password incorrect
         if (!checkCorrectPassword) {
@@ -59,7 +60,7 @@ export const login = async (req, res) => {
         res.cookie("accessToken", token, {
             httpOnly: true,
             expires: token.expiresIn,
-        }).status(200).json({ success: true, message: "login successful", data:{...rest}});
+        }).status(200).json({ token, data: { ...rest }, role });
     } catch (err) {
         res.status(500).json({ success: false, message: "login fail" })
     }

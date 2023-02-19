@@ -1,5 +1,6 @@
 import express from 'express';
 import { getAllUser, deleteUser, getFeaturedUser, updateUser } from '../controllers/userController.js';
+import { verifyAdmin, verifyUser } from './../utils/verifyToken.js';
 const router = express.Router()
 
 
@@ -7,25 +8,16 @@ const router = express.Router()
 // router.post('/', createUser);
 
 // update User
-router.put('/:id', updateUser);
+router.put('/:id', verifyUser,updateUser);
 
 // delete User
-router.delete('/:id', deleteUser);
+router.delete('/:id',verifyUser, deleteUser);
 
-// getSingle User
-router.get('/:id', getFeaturedUser);
+// get single User
+router.get('/:id', verifyUser,getFeaturedUser);
 
 // getAll User
-router.get('/', getAllUser);
-
-// // get User By Search
-// router.get('/search/getUserBySearch', getUserBySearch);
-
-// // get Featured User
-// router.get('/search/getFeaturedUsers', getFeaturedUser);
-
-// // get Count User
-// router.get('/search/getUserCount', getUserCount);
+router.get('/', verifyAdmin, getAllUser);
 
 
 export default router;
