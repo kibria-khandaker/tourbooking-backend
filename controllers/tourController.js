@@ -112,6 +112,6 @@ export const getTourCount = async (req, res) => {
 
         res.status(200).json({ success: true, data: tourCount });
     } catch (err) {
-        res.status(404).json({ success: false, message: "failed to fetch" });
+        res.status(404).json({ success: false, message: "failed to fetch data" });
     }
 };
