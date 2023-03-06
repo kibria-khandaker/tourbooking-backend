@@ -51,12 +51,9 @@ export const getSingleTour = async (req, res) => {
 
 // getAll tour
 export const getAllTour = async (req, res) => {
-
     // for pagination 
     const page = parseInt(req.query.page);
-
     // console.log(page);    
-
     try {
         const tours = await Tour.find({})
             .populate('reviews')
@@ -103,6 +100,7 @@ export const getFeaturedTour = async (req, res) => {
         res.status(404).json({ success: false, message: "Not found data" });
     }
 };
+
 
 // get all tour count number
 export const getTourCount = async (req, res) => {
